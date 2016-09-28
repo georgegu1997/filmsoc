@@ -314,9 +314,9 @@ class Disk(LogModel):
         """
         # go through checks
         reserve_limit = self.get_borrow_limit()
-        if user.reserved.count() >= reserve_limit:
+        if user.reserved.count() + user.borrowed.count() >= reserve_limit:
             raise BusinessException(
-                ("A member can reserve at most %d disks"
+                ("A member can reserve or borrow at most %d disks"
                 " at the same time" % reserve_limit),
                 3)
         if self.avail_type != 'Available':
@@ -360,9 +360,9 @@ class Disk(LogModel):
             The user that tries to borrow the disk
         """
         borrow_limit = self.get_borrow_limit()
-        if user.borrowed.count() >= borrow_limit:
+        if user.borrowed.count() + user.reserved.count() >= borrow_limit:
             raise BusinessException(
-                ("A member can borrow at most %d disks"
+                ("A member can borrow or reserve at most %d disks"
                 " at the same time" % borrow_limit),
                 3)
         if not self.check_enable():
@@ -402,6 +402,11 @@ class Disk(LogModel):
                 "The disk can only be renewed once", 3)
         # renew it
         self.due_at = date.today() + timedelta(7)
+
+        # set the due date automatically at the closing_date(temporary code)
+        #closing_date = date(2016,5,6)
+        #if self.due_at > closing_date:
+        #    self.due_at = closing_date
 
     def check_in(self):
         """Check in the disk

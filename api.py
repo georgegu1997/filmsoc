@@ -475,6 +475,8 @@ class DiskResource(LoggedRestResource):
                 # only admin or holder can renew
                 if obj.hold_by != req_user:
                     return jsonify(errno=3, error="Disk not borrowed by the user")
+                #if obj.hold_by == req_user:
+                #    return jsonify(errno=3, error="You can not renew the disk at this period.")
                 if not self.check_post(obj) and req_user != g.user:
                     return self.response_forbidden()
 

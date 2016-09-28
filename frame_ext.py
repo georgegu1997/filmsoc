@@ -104,7 +104,7 @@ class CASAuth(Auth):
                             return response
 
                     # redirect to front server
-                    return redirect('%s#%s' % 
+                    return redirect('%s#%s' %
                                     (
                                         self.app.config['FRONT_SERVER'],
                                         next_url
@@ -123,7 +123,8 @@ class CASAuth(Auth):
         """
         next_url = request.args.get('next') or ""
         next_url = self.app.config['FRONT_SERVER'] + '#' + next_url
-        self.logout_user(self.get_logged_in_user())
+       #self.logout_user(self.get_logged_in_user())
+        self.logout_user()
         return redirect(
             flask_cas.logout(self.app.config['AUTH_SERVER'], next_url))
 
@@ -306,7 +307,7 @@ class HookedResource(RestResource):
             return resp
         return inner
 
-    def apply_filter(self, query, expr, op, arg_list):
+    def apply_filter(self, query, expr, op, arg_list, negated):
         """Construct the Database Query based on filters.
         Override its super form by adding a 'in' keyword support.
         Now 'in' operator supports query splitted in ','s
@@ -576,7 +577,7 @@ class HookedResource(RestResource):
                     query = self.apply_search_query(
                         query, list(kw_set), self._search[engine])
 
-        # apply output limit 
+        # apply output limit
         if self.paginate_by or 'limit' in request.args:
             return self.paginated_object_list(query)
 
