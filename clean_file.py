@@ -28,31 +28,31 @@ def main():
     
     file_id_in_use = []
     
-    file_in_use = Exco.select('img_url_id')
+    file_in_use = Exco.select()
     for file in file_in_use:
         file_id_in_use.append(file.img_url_id)
         
-    file_in_use = Disk.select('cover_url_id')
+    file_in_use = Disk.select()
     for file in file_in_use:
         file_id_in_use.append(file.cover_url_id)
         
-    file_in_use = Document.select('doc_url_id')
+    file_in_use = Document.select()
     for file in file_in_use:
         file_id_in_use.append(file.doc_url_id)
         
-    file_in_use = PreviewShowTicket.select('cover_url_id')
+    file_in_use = PreviewShowTicket.select()
     for file in file_in_use:
         file_id_in_use.append(file.cover_url_id)
         
-    file_in_use = Publication.select('cover_url_id')
+    file_in_use = Publication.select()
     for file in file_in_use:
         file_id_in_use.append(file.cover_url_id)
         
-    file_in_use = Publication.select('doc_url_id')
+    file_in_use = Publication.select()
     for file in file_in_use:
         file_id_in_use.append(file.doc_url_id)
         
-    file_in_use = Sponsor.select('img_url_id')
+    file_in_use = Sponsor.select()
     for file in file_in_use:
         file_id_in_use.append(file.img_url_id)
         
