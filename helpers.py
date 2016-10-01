@@ -18,6 +18,7 @@ __all__ = [
     'get_sympa',
     'update_mailing_list',
     'upload_file',
+    'delete_file',
     'send_email',
 ]
 
@@ -143,6 +144,12 @@ def upload_file(filename, file_handler):
     conn.storbinary("STOR " + filename, file_handler)
     conn.quit()
 
+def delete_file(filename_list):
+    conn = FTP('ihome.ust.hk', app.config['SOCIETY_USERNAME'],app.config['SOCIETY_PASSWORD'])
+    conn.cwd('/asset/upload')
+    for filename in filename_list:
+        conn.delete(filename)
+    conn.quit()
 
 def send_email(receiver, bcc, subject, body):
     """Send an email
