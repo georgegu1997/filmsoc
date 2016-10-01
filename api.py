@@ -399,8 +399,8 @@ class DiskResource(LoggedRestResource):
         return "%s disk %s" % (g.modify_flag, callnumber)
 
     def get_query(self):
-        """Hide drafts to common member"""
-        if g.user and g.user.admin:
+        """Hide drafts to non admin"""
+        if g.user.admin:
             return super(DiskResource, self).get_query()
         else:
             return self.model.select().where(self.model.avail_type != "Draft")

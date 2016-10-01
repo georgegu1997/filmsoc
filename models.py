@@ -360,7 +360,7 @@ class Disk(LogModel):
             The user that tries to borrow the disk
         """
         borrow_limit = self.get_borrow_limit()
-        if user.borrowed.count() + user.reserved.count() >= borrow_limit:
+        if user.borrowed.count() + user.reserved.count() >= borrow_limit and self.reserved_by != user:
             raise BusinessException(
                 ("A member can borrow or reserve at most %d disks"
                 " at the same time" % borrow_limit),
