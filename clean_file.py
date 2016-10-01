@@ -55,12 +55,8 @@ def main():
     file_in_use = Sponsor.select()
     for file in file_in_use:
         file_id_in_use.append(file.img_url_id)
-<<<<<<< HEAD
-    file_id_in_use.sort() 
-=======
         
     file_id_in_use.sort()
->>>>>>> 4df9dcdb71aa69d745d479b2f720294f4bf213f4
     print file_id_in_use
 
 """
