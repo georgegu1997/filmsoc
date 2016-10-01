@@ -56,6 +56,7 @@ def main():
     for file in file_in_use:
         file_id_in_use.append(file.img_url_id)
         
+    file_id_in_use.sort()
     print file_id_in_use
 
 """
