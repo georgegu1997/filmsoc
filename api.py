@@ -577,7 +577,6 @@ class RegularFilmShowResource(LoggedRestResource):
     }
 
     def get_query(self):
-        """Hide drafts to member"""
         if g.user and g.user.admin:
             return super(RegularFilmShowResource, self).get_query()
         else:
