@@ -911,7 +911,6 @@ class PreviewShowTicketResource(LoggedRestResource):
     }
 
     def get_query(self):
-      """hide drafts from non-admins"""
         if g.user and g.user.admin:
             return super(PreviewShowTicketResource, self).get_query()
         else:
