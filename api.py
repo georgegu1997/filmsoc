@@ -400,7 +400,7 @@ class DiskResource(LoggedRestResource):
 
     def get_query(self):
         """Hide drafts to non admin"""
-        if g.user.admin:
+        if g.user and g.user.admin:
             return super(DiskResource, self).get_query()
         else:
             return self.model.select().where(self.model.avail_type != "Draft")
