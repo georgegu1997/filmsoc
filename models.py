@@ -564,7 +564,7 @@ class RegularFilmShow(LogModel):
         """
         if self.state != 'Pending':
             raise BusinessException("The show is not in Pending mode", 3)
-        if user.id in self.participant_list:
+        if str(user.id) in self.participant_list:
             raise BusinessException("Recorded before", 3)
         user.rfs_count += 1
         self.participant_list.append(user.id)
