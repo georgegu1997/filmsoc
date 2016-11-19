@@ -404,9 +404,9 @@ class Disk(LogModel):
         self.due_at = date.today() + timedelta(7)
 
         # set the due date automatically at the closing_date(temporary code)
-        #closing_date = date(2016,5,6)
-        #if self.due_at > closing_date:
-        #    self.due_at = closing_date
+        closing_date = date(2016,11,25)
+        if self.due_at > closing_date:
+            self.due_at = closing_date
 
     def check_in(self):
         """Check in the disk
