@@ -324,6 +324,8 @@ class Disk(LogModel):
         if not self.check_enable():
             raise BusinessException("VCD/DVD Library Closed", 3)
 
+        raise BusinessException("Disks cannot be reserved at this period.", 3)
+
         self.reserved_by = g.user
         self.avail_type = ("Reserved" if reserve_type == "Hall"
                             else "ReservedCounter")
