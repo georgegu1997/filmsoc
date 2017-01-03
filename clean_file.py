@@ -13,6 +13,7 @@ from helpers import delete_file
 # PreviewShowTicket -> cover_url_id
 # Publication -> cover_url_id doc_url_id
 # Sponsor -> img_url_id
+# SiteSettings -> header_image
 
 def main():
 
@@ -20,7 +21,8 @@ def main():
 
     file_in_use = Exco.select()
     for file in file_in_use:
-        file_id_in_use.append(file.img_url_id)
+        if file.img_url_id != None:
+            file_id_in_use.append(file.img_url_id)
 
     file_in_use = Disk.select()
     for file in file_in_use:
@@ -29,23 +31,33 @@ def main():
 
     file_in_use = Document.select()
     for file in file_in_use:
-        file_id_in_use.append(file.doc_url_id)
+        if file.doc_url_id != None:
+            file_id_in_use.append(file.doc_url_id)
 
     file_in_use = PreviewShowTicket.select()
     for file in file_in_use:
-        file_id_in_use.append(file.cover_url_id)
+        if file.cover_url_id != None:
+            file_id_in_use.append(file.cover_url_id)
 
     file_in_use = Publication.select()
     for file in file_in_use:
-        file_id_in_use.append(file.cover_url_id)
+        if file.cover_url_id != None:
+            file_id_in_use.append(file.cover_url_id)
 
     file_in_use = Publication.select()
     for file in file_in_use:
-        file_id_in_use.append(file.doc_url_id)
+        if file.doc_url_id != None:
+            file_id_in_use.append(file.doc_url_id)
 
     file_in_use = Sponsor.select()
     for file in file_in_use:
-        file_id_in_use.append(file.img_url_id)
+        if file.img_url_id != None:
+            file_id_in_use.append(file.img_url_id)
+            
+    file_in_use = SiteSettings.select()
+    for setting in SiteSettings:
+        if setting.key == "header_image":
+            file_id_in_use.append(setting.value)
 
     file_id_in_use.sort()
     print file_id_in_use
