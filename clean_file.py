@@ -81,20 +81,5 @@ def main():
     else:
         print "Deletion cancelled!"
 
-
-"""
-def main():
-    user_sq = User.select().where(
-    	User.member_type != 'Expired',
-    	User.expire_at <= date.today()
-    )
-    for user in user_sq:
-        user.member_type = 'Expired'
-        user.save()
-
-    update_mailing_list(
-        [x.itsc for x in User.select(User.itsc).where(
-            User.member_type != 'Expired')])
-"""
 if __name__ == '__main__':
     main()
