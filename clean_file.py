@@ -18,46 +18,70 @@ from helpers import delete_file
 def main():
 
     file_id_in_use = []
+    counter = 0
 
     file_in_use = Exco.select()
+    counter = 0
     for file in file_in_use:
         if file.img_url_id != None:
+            counter ++
             file_id_in_use.append(file.img_url_id)
+    print "file used in Exco:", counter
 
     file_in_use = Disk.select()
+    counter = 0
     for file in file_in_use:
         if file.cover_url_id != None:
+            counter ++
             file_id_in_use.append(file.cover_url_id)
+    print "file used in Disk:", counter
 
     file_in_use = Document.select()
+    counter = 0
     for file in file_in_use:
         if file.doc_url_id != None:
+            counter ++
             file_id_in_use.append(file.doc_url_id)
+    print "file used in Document:", counter
 
     file_in_use = PreviewShowTicket.select()
+    counter = 0
     for file in file_in_use:
         if file.cover_url_id != None:
+            counter ++
             file_id_in_use.append(file.cover_url_id)
+    print "file used in PreviewShowTicket:", counter
 
     file_in_use = Publication.select()
+    counter = 0
     for file in file_in_use:
         if file.cover_url_id != None:
+            counter ++
             file_id_in_use.append(file.cover_url_id)
         if file.doc_url_id != None:
+            counter ++
             file_id_in_use.append(file.doc_url_id)
+    print "file used in Publication:", counter
 
     file_in_use = Sponsor.select()
+    counter = 0
     for file in file_in_use:
         if file.img_url_id != None:
+            counter ++
             file_id_in_use.append(file.img_url_id)
+    print "file used in Sponsor:", counter
 
     file_in_use = SiteSettings.select()
+    counter = 0
     for setting in SiteSettings:
         if setting.key == "header_image":
+            counter ++
             file_id_in_use.append(int(setting.value))
+    print "file used in SiteSettings:", counter
 
     file_id_in_use.sort()
     #print file_id_in_use
+    print "Total number of files in use:", len(file_id_in_use)
 
     all_file = File.select()
     obs_file = []
