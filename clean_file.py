@@ -24,7 +24,8 @@ def main():
 
     file_in_use = Disk.select()
     for file in file_in_use:
-        file_id_in_use.append(file.cover_url_id)
+        if file.cover_url_id != None:
+            file_id_in_use.append(file.cover_url_id)
 
     file_in_use = Document.select()
     for file in file_in_use:
@@ -60,7 +61,8 @@ def main():
             obs_file_id.append(file.id)
 
     print obs_file_id
-    print obs_file_url
+    for url in obs_file_url:
+        print url
 
 
 """
