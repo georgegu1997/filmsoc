@@ -57,8 +57,7 @@ def main():
     file_in_use = SiteSettings.select()
     for setting in SiteSettings:
         if setting.key == "header_image":
-            print setting.value
-            file_id_in_use.append(setting.value)
+            file_id_in_use.append(int(setting.value))
 
     file_id_in_use.sort()
     print file_id_in_use
