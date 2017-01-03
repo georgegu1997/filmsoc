@@ -96,7 +96,7 @@ def main():
     #print obs_file_id
     for file in obs_file:
         print file.id,"\t",file.name,"\t",file.url
-    print "total:", len(obs_file)
+    print "total:", len(obs_file_url)
 
     answer = raw_input("These files will be deleted from the ihome server, are you sure?(Y/N)")
     if answer == "Y" or answer == "y":
