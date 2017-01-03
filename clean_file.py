@@ -71,7 +71,7 @@ def main():
 
     #print obs_file_id
     for file in obs_file:
-        print file.id, file.name, file.url
+        print file.id+"\t"+file.name+"\t"+file.url
     print "total:", len(obs_file)
 
     answer = raw_input("These files will be deleted from the ihome server, are you sure?(Y/N)")
@@ -81,20 +81,5 @@ def main():
     else:
         print "Deletion cancelled!"
 
-
-"""
-def main():
-    user_sq = User.select().where(
-    	User.member_type != 'Expired',
-    	User.expire_at <= date.today()
-    )
-    for user in user_sq:
-        user.member_type = 'Expired'
-        user.save()
-
-    update_mailing_list(
-        [x.itsc for x in User.select(User.itsc).where(
-            User.member_type != 'Expired')])
-"""
 if __name__ == '__main__':
     main()
