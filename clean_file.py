@@ -24,7 +24,7 @@ def main():
     counter = 0
     for file in file_in_use:
         if file.img_url_id != None:
-            counter ++
+            counter += 1
             file_id_in_use.append(file.img_url_id)
     print "file used in Exco:", counter
 
@@ -32,7 +32,7 @@ def main():
     counter = 0
     for file in file_in_use:
         if file.cover_url_id != None:
-            counter ++
+            counter += 1
             file_id_in_use.append(file.cover_url_id)
     print "file used in Disk:", counter
 
@@ -40,7 +40,7 @@ def main():
     counter = 0
     for file in file_in_use:
         if file.doc_url_id != None:
-            counter ++
+            counter += 1
             file_id_in_use.append(file.doc_url_id)
     print "file used in Document:", counter
 
@@ -48,7 +48,7 @@ def main():
     counter = 0
     for file in file_in_use:
         if file.cover_url_id != None:
-            counter ++
+            counter += 1
             file_id_in_use.append(file.cover_url_id)
     print "file used in PreviewShowTicket:", counter
 
@@ -56,10 +56,10 @@ def main():
     counter = 0
     for file in file_in_use:
         if file.cover_url_id != None:
-            counter ++
+            counter += 1
             file_id_in_use.append(file.cover_url_id)
         if file.doc_url_id != None:
-            counter ++
+            counter += 1
             file_id_in_use.append(file.doc_url_id)
     print "file used in Publication:", counter
 
@@ -67,7 +67,7 @@ def main():
     counter = 0
     for file in file_in_use:
         if file.img_url_id != None:
-            counter ++
+            counter += 1
             file_id_in_use.append(file.img_url_id)
     print "file used in Sponsor:", counter
 
@@ -75,7 +75,7 @@ def main():
     counter = 0
     for setting in SiteSettings:
         if setting.key == "header_image":
-            counter ++
+            counter += 1
             file_id_in_use.append(int(setting.value))
     print "file used in SiteSettings:", counter
 
