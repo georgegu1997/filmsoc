@@ -73,8 +73,9 @@ def main():
             obs_file_id.append(file.id)
 
     print obs_file_id
-    for url in obs_file_url:
-        print url
+    for file in obs_file:
+        print file.id
+        print file.url
 
 
 """
