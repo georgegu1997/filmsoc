@@ -43,9 +43,6 @@ def main():
     for file in file_in_use:
         if file.cover_url_id != None:
             file_id_in_use.append(file.cover_url_id)
-
-    file_in_use = Publication.select()
-    for file in file_in_use:
         if file.doc_url_id != None:
             file_id_in_use.append(file.doc_url_id)
 
@@ -53,7 +50,7 @@ def main():
     for file in file_in_use:
         if file.img_url_id != None:
             file_id_in_use.append(file.img_url_id)
-            
+
     file_in_use = SiteSettings.select()
     for setting in SiteSettings:
         if setting.key == "header_image":
@@ -74,9 +71,9 @@ def main():
 
     #print obs_file_id
     for file in obs_file:
-        print file.id
-        print file.url
-        
+        print file.id, file.name, file.url
+    print "total:", len(obs_file)
+
     answer = raw_input("These files will be deleted from the ihome server, are you sure?(Y/N)")
     if answer == "Y" or answer == "y":
         #delete_file(obs_file_url)
