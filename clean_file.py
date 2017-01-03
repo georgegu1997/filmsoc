@@ -78,7 +78,7 @@ def main():
         print file.url
         
     print "These files will be deleted from the ihome server, are you sure?(Y/N)"
-    answer = input()
+    answer = raw_input()
     if answer == "Y" or answer == "y":
         #delete_file(obs_file_url)
         print "Deletion finished!"
