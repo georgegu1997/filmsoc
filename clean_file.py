@@ -15,49 +15,53 @@ from helpers import delete_file
 # Sponsor -> img_url_id
 
 def main():
-    '''
-    file_in_use = []
-    file_in_use += Exco.select('img_url_id')
-    file_in_use += Disk.select('cover_url_id')
-    file_in_use += Document.select('doc_url_id')
-    file_in_use += PreviewShowTicket.select('cover_url_id')
-    file_in_use += Publication.select('cover_url_id')
-    file_in_use += Publication.select('doc_url_id')
-    file_in_use += Sponsor.select('img_url_id')
-    '''
-    
+
     file_id_in_use = []
-    
+
     file_in_use = Exco.select()
     for file in file_in_use:
         file_id_in_use.append(file.img_url_id)
-        
+
     file_in_use = Disk.select()
     for file in file_in_use:
         file_id_in_use.append(file.cover_url_id)
-        
+
     file_in_use = Document.select()
     for file in file_in_use:
         file_id_in_use.append(file.doc_url_id)
-        
+
     file_in_use = PreviewShowTicket.select()
     for file in file_in_use:
         file_id_in_use.append(file.cover_url_id)
-        
+
     file_in_use = Publication.select()
     for file in file_in_use:
         file_id_in_use.append(file.cover_url_id)
-        
+
     file_in_use = Publication.select()
     for file in file_in_use:
         file_id_in_use.append(file.doc_url_id)
-        
+
     file_in_use = Sponsor.select()
     for file in file_in_use:
         file_id_in_use.append(file.img_url_id)
-        
+
     file_id_in_use.sort()
     print file_id_in_use
+
+    all_file = File.select()
+    obs_file = []
+    obs_file_url = []
+    obs_file_id = []
+    for file in all_file:
+        if file.id not in file_id_in_use:
+            obs_file.append(file)
+            obs_file_url.append(file.url)
+            obs_file_id.append(file.id)
+
+    print obs_file_id
+    print obs_file_url
+
 
 """
 def main():
