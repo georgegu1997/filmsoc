@@ -60,7 +60,7 @@ def main():
             file_id_in_use.append(int(setting.value))
 
     file_id_in_use.sort()
-    print file_id_in_use
+    #print file_id_in_use
 
     all_file = File.select()
     obs_file = []
@@ -72,10 +72,18 @@ def main():
             obs_file_url.append(file.url)
             obs_file_id.append(file.id)
 
-    print obs_file_id
+    #print obs_file_id
     for file in obs_file:
         print file.id
         print file.url
+        
+    print "These files will be deleted from the ihome server, are you sure?(Y/N)"
+    answer = input()
+    if answer == "Y" or answer == "y":
+        #delete_file(obs_file_url)
+        print "Deletion finished!"
+    else:
+        print "Deletion cancelled!"
 
 
 """
