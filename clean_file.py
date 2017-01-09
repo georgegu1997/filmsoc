@@ -3,6 +3,7 @@
 
 # A script to clean the files not in use in the ihome server.
 # The script should be run when you find the storage in the FTP server is almost full.
+# written by GU Qiao (georgegu1997@gmail.com)
 
 from models import *
 from helpers import delete_file
