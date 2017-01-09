@@ -3,6 +3,7 @@
 
 # A script to clean the files not in use in the ihome server.
 # The script should be run when you find the storage in the FTP server is almost full.
+# written by GU Qiao (georgegu1997@gmail.com)
 
 from models import *
 from helpers import delete_file
@@ -96,7 +97,7 @@ def main():
     #print obs_file_id
     for file in obs_file:
         print file.id,"\t",file.name,"\t",file.url
-    print "total:", len(obs_file)
+    print "total:", len(obs_file_url)
 
     answer = raw_input("These files will be deleted from the ihome server, are you sure?(Y/N)")
     if answer == "Y" or answer == "y":
