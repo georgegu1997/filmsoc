@@ -324,7 +324,7 @@ class Disk(LogModel):
         if not self.check_enable():
             raise BusinessException("VCD/DVD Library Closed", 3)
 
-        raise BusinessException("Disks cannot be reserved at this period.", 3)
+        #raise BusinessException("Disks cannot be reserved at this period.", 3)
 
         self.reserved_by = g.user
         self.avail_type = ("Reserved" if reserve_type == "Hall"
@@ -406,9 +406,9 @@ class Disk(LogModel):
         self.due_at = date.today() + timedelta(7)
 
         # set the due date automatically at the closing_date(temporary code)
-        closing_date = date(2016,11,25)
-        if self.due_at > closing_date:
-            self.due_at = closing_date
+        #closing_date = date(2016,11,25)
+        #if self.due_at > closing_date:
+        #    self.due_at = closing_date
 
     def check_in(self):
         """Check in the disk
