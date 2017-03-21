@@ -147,8 +147,12 @@ def upload_file(filename, file_handler):
 def delete_file(filename_list):
     conn = FTP('ihome.ust.hk', app.config['SOCIETY_USERNAME'],app.config['SOCIETY_PASSWORD'])
     conn.cwd('/asset/upload')
+    #list all the file nams in the current directory
+    list = conn.nlst()
     for filename in filename_list:
-        conn.delete(filename)
+        #check whether this file exists in the directory
+        if filename in list:
+            conn.delete(filename)
     conn.quit()
 
 def send_email(receiver, bcc, subject, body):
